@@ -12,15 +12,21 @@ void setup() {
 }
 
 void loop() {
+  // Test output every 5 seconds to verify communication
+  static unsigned long lastHeartbeat = 0;
+  if (millis() - lastHeartbeat > 5000) {
+    Serial.println("Arduino alive");
+    lastHeartbeat = millis();
+  }
+  
   if (!mfrc522.PICC_IsNewCardPresent()) return;
   if (!mfrc522.PICC_ReadCardSerial()) return;
   
-  Serial.println("Card detected!");
-  
-  // Print card UID
+  // Format UID for Flask server parsing
   String uid = "";
   for (byte i = 0; i < mfrc522.uid.size; i++) {
-    uid += String(mfrc522.uid.uidByte[i] < 0x10 ? "0" : "");
+    if (i > 0) uid += ":";
+    if (mfrc522.uid.uidByte[i] < 0x10) uid += "0";
     uid += String(mfrc522.uid.uidByte[i], HEX);
   }
   Serial.println("UID: " + uid);
