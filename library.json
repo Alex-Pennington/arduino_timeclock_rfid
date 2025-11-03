@@ -1,0 +1,41 @@
+{
+  "name": "ArduinoNFCTimeClock",
+  "version": "1.0.0",
+  "description": "NFC/RFID-based employee time tracking system using Arduino Uno with HW-555 LCD Shield and Elechouse NFC V3",
+  "keywords": [
+    "arduino",
+    "nfc",
+    "rfid",
+    "timeclock",
+    "employee",
+    "tracking",
+    "lcd",
+    "i2c"
+  ],
+  "authors": [
+    {
+      "name": "Arduino Time Clock Project"
+    }
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/yourusername/arduino-nfc-timeclock.git"
+  },
+  "frameworks": ["arduino"],
+  "platforms": ["atmelavr"],
+  "dependencies": [
+    {
+      "name": "PN532",
+      "version": "^1.2.0"
+    },
+    {
+      "name": "LiquidCrystal_I2C",
+      "version": "^1.1.2"
+    },
+    {
+      "name": "NDEF",
+      "version": "^0.2.0"
+    }
+  ]
+}
